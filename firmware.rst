@@ -38,6 +38,13 @@ communicate.
      - 8KB
      - ``da412e891fc30a4361348fb50ef2fa47150e0bbbd8c192d84080bd9ebda990583c25694be64874a9c646f9444cfc0fc3c883f2ea5a17b1809ae5e32acb260f42``
 
+Useful tools
+~~~~~~~~~~~~
+
+* `Disassembler (naken_asm) <https://github.com/mikeakohn/naken_asm>`_
+* `Decompiler (Ghidra) <https://ghidra-sre.org/>`_
+  with `STM8 plugin <https://github.com/esaulenka/ghidra_STM8>`_
+
 Modifications
 ~~~~~~~~~~~~~
 
