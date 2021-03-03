@@ -5,7 +5,8 @@ Overview
 --------
 
 5.1 surround sound speaker system with the amplifier built into the subwoofer
-and managed by an external control console attached using a DB-15 connector.
+and managed by an external control console attached using a
+`DE-15 <https://en.wikipedia.org/wiki/D-subminiature>`_ connector.
 
 Purpose
 -------
@@ -27,7 +28,7 @@ Contents
 --------
 
 * `Firmware <firmware.rst>`_
-* `Serial Interface <interface.rst>`_
+* `Interface <interface.rst>`_
 * `Protocol <protocol.rst>`_
 
 "Logitech" is a trademark of `Logitech International SA <https://www.logitech.com/>`_.
