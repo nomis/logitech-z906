@@ -286,14 +286,13 @@ Turning the rear level down below 0 is ignored and no command is sent.
 Input selection
 ---------------
 
-The should be a command to indicate that the "decode" light should be turned on
-but this has not been tested. It looks like ``18`` indicates "no signal".
-
 Mute the volume before changing inputs (`Volume/level commands`_) and switch to
 the configured effect for the input (`Effect selection`_) before unmuting.
 
-Input 1
-~~~~~~~
+The "decode" light turns on if there is a digital signal from inputs 3, 4 or 5.
+
+Input 1 (3.5mm TRS, 6 channels)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: none
 
@@ -306,8 +305,8 @@ Input 1
    < XX (effect selection)
    < 08 ... (unmute)
 
-Input 2
-~~~~~~~
+Input 2 (RCA, 2 channels)
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: none
 
@@ -320,8 +319,8 @@ Input 2
    < XX (effect selection)
    < 08 ... (unmute)
 
-Input 3
-~~~~~~~
+Input 3 (TOSLINK, S/PDIF optical fibre)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: none
 
@@ -331,11 +330,12 @@ Input 3
    > 08 ... (unmute)
    < 09 ... (mute)
    < 03
+   < XX = decode state (17 = signal detected, 18 = no signal)
    < XX (effect selection)
    < 08 ... (unmute)
 
-Input 4
-~~~~~~~
+Input 4 (TOSLINK, S/PDIF optical fibre)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: none
 
@@ -345,11 +345,12 @@ Input 4
    > 08 ... (unmute)
    < 09 ... (mute)
    < 04
+   < XX = decode state (17 = signal detected, 18 = no signal)
    < XX (effect selection)
    < 08 ... (unmute)
 
-Input 5
-~~~~~~~
+Input 5 (RCA, S/PDIF 75Ω coaxial)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: none
 
@@ -359,12 +360,13 @@ Input 5
    > 08 ... (unmute)
    < 09 ... (mute)
    < 06
+   < XX = decode state (17 = signal detected, 18 = no signal)
    < XX (effect selection)
    < 08 ... (unmute)
 
 
-Input 6 (aux)
-~~~~~~~~~~~~~
+Input 6 (3.5mm TRS on the console, 2 channels)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: none
 
