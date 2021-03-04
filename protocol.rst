@@ -54,14 +54,14 @@ Read status/configuration
    < 00 = input 6 effect (0 = 3D, 1 = 2.1, 2 = 4.1, 3 = disabled)
    < 03 = input 1 effect (0 = 3D, 1 = 2.1, 2 = 4.1, 3 = disabled)
    < 00
-   < 00 = (00 or 0E ?)
-   < 00 = (speaker test?)
+   < 00 = unknown (00 or 0E)
+   < 00 = speaker test? (00 or 33)
    < 01
    < 05
    < 04
-   < 00 = (0 = on, 1 = standby)
+   < 00 = standby (0 = on, 1 = standby)
    < 00
-   < 00 = (0 = auto standby, 1 = stay on forever)
+   < 00 = auto standby (0 = enabled, 1 = disabled)
    < XX = checksum
 
 Write status/configuration
@@ -509,7 +509,7 @@ light goes out). The setting will be toggled.
    > 0A = type
    > 14 = length of remaining data (excluding checksum)
    > 0A 15 15 15 00 00 00 00 00 00 03 00 00 00 01 05 04 00 00
-   > XX = (0 = auto standby, 1 = stay on forever)
+   > XX = auto standby (0 = enabled, 1 = disabled)
    > XX = checksum
    > 36
    < AA
