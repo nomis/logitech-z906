@@ -121,6 +121,23 @@ this command every 60 seconds after the last user input.
    < 00 06 1C = idle time (U24BE in seconds)
    < XX = checksum
 
+Read input volume
+~~~~~~~~~~~~~~~~~
+
+The console doesn't use this command, but you can find out the current volume of
+the input. Silence is 0 and it looks like it goes up to 1,000,000 with some
+maximum amplitude square waves. Normal values are around 1,000 to 2,000.
+
+.. code-block:: none
+
+   > 2F
+   < 2F
+   < AA
+   < 08 = type
+   < 03 = length of remaining data (excluding checksum)
+   < 00 00 00 = volume (U24BE in unknown units)
+   < XX = checksum
+
 Power commands
 --------------
 
