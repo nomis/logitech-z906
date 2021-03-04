@@ -18,15 +18,9 @@ Automatic standby
 Automatic standby is managed by the console but it can be disabled in the
 configuration maintained by the amplifier.
 
-Use the `Write status/configuration`_ command to set auto standby and
-then power on and off with the console to save the setting.
-
-There is no known key sequence to do this from the console. It does not appear
-to have the ability to set this normally but it will clear it if the reset
-feature is used (go into standby and hold the "input" button for 8 seconds).
-
-Alternatively, send command `Reset idle time`_ every time the console sends
-command `Read idle time`_ so that the idle timeout is never reached.
+Hold the "level" button for 5 seconds (until the level change light goes out).
+There's no other indication that anything has changed. Use the reset procedure
+to get this into a known state (automatic standby enabled).
 
 Message formats
 ---------------
@@ -507,3 +501,30 @@ Sends `Read status/configuration`_ at the end to update the console state.
    < 36
    > 34
    < AA 0A 14 0A 15 15 15 00 00 00 00 00 00 03 00 00 00 01 05 04 00 00 00 8C
+
+Enable/disable automatic standby
+--------------------------------
+
+While powered on hold the "level" button for 5 seconds (until the level change
+light goes out). The setting will be toggled.
+
+.. code-block:: none
+
+   > AA
+   > 0E = type
+   > 03 = length of remaining data (excluding checksum)
+   > 20 00 00
+   > CF = checksum
+   > AA
+   > 0A = type
+   > 14 = length of remaining data (excluding checksum)
+   > 0A 15 15 15 00 00 00 00 00 00 03 00 00 00 01 05 04 00 00
+   > XX = (0 = auto standby, 1 = stay on forever)
+   > XX = checksum
+   > 36
+   < AA
+   < FF = type
+   < 01 = length of remaining data (excluding checksum)
+   < 8A
+   < 76 = checksum
+   < 36
