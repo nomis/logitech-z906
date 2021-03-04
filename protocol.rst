@@ -4,23 +4,10 @@ Protocol
 All commands are initiated by the console. All state is maintained primarily by
 the amplifier so the console requires the echoed responses to update its state.
 
-Hidden behaviour modifications
-------------------------------
-
 There is no way to do automatic power on without modifying the
 `firmware <firmware.rst>`_. It is not otherwise possible to make the console
 light up and respond to input unless it is powered on through its own power
 button or remote control.
-
-Automatic standby
-~~~~~~~~~~~~~~~~~
-
-Automatic standby is managed by the console but it can be disabled in the
-configuration maintained by the amplifier.
-
-Hold the "level" button for 5 seconds (until the level change light goes out).
-There's no other indication that anything has changed. Use the reset procedure
-to get this into a known state (automatic standby enabled).
 
 Message formats
 ---------------
@@ -104,6 +91,9 @@ Read idle time
 The idle time is not just reset by the console, it is also reset by the
 amplifier itself when non-silent audio is being output. The console will send
 this command every 60 seconds after the last user input.
+
+If automatic standby is enabled and the time is reached the console will turn
+the power off.
 
 .. code-block:: none
 

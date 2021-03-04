@@ -19,10 +19,12 @@ The console `firmware <firmware.rst>`_ can be modified to:
 * Automatically turn the speakers on when power is supplied.
 * Change the automatic standby idle timeout from the default 2 hours.
 
-The amplifier can be configured through the `serial interface <interface.rst>`_
-and `protocol <protocol.rst>`_ commands to disable the automatic standby idle
-timeout.
+Automatic standby
+~~~~~~~~~~~~~~~~~
 
+Hold the "level" button for 5 seconds (until the level change light goes out).
+There's no other indication that anything has changed. Use the reset procedure
+to get this into a known state (automatic standby enabled).
 
 Contents
 --------
