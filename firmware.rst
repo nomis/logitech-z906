@@ -25,6 +25,8 @@ and `stm8flash <https://github.com/vdudouyt/stm8flash>`_.
 
 The flash consists of 64 byte pages. Writes must be to whole pages.
 
+The EEPROM consists of 640 bytes that are all zero.
+
 Attempts were made to use an official ST-LINK/V2 but it was unable to
 communicate.
 
