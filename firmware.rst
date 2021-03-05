@@ -13,11 +13,12 @@ header is at the bottom of the PCB to the right of the microcontroller.
 
    Programming header pins
 
-   +--------------------+--------------------+--------------------+
-   | ○ No connection    | ○ SWIM (pin 26)    | ○ NRST (pin 1)     |
-   +--------------------+--------------------+--------------------+
-   | ■ VCC (pin 6) 3.3V | ○ GND (pin 4)      | ○ GND (pin 4)      |
-   +--------------------+--------------------+--------------------+
+   +---------------------------+--------------------+--------------------+
+   | ○ No connection           | ○ SWIM (pin 26)    | ○ NRST (pin 1)     |
+   +---------------------------+--------------------+--------------------+
+   | ■ |Vdd| (pin 6) 3.3V      | ○ GND (pin 4)      | ○ GND (pin 4)      |
+   +---------------------------+--------------------+--------------------+
+.. |Vdd| replace:: V\ :sub:`DD`
 
 The firmware can be accessed using an ST-LINK implementation,
 e.g. `esp-stlink <https://github.com/rumpeltux/esp-stlink>`_
