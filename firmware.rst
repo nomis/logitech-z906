@@ -33,10 +33,10 @@ communicate.
 
    * - Version
      - Size
-     - SHA512 hash
+     - SHA-3-256 hash
    * - S-00103 (2020)
      - 8KB
-     - ``da412e891fc30a4361348fb50ef2fa47150e0bbbd8c192d84080bd9ebda990583c25694be64874a9c646f9444cfc0fc3c883f2ea5a17b1809ae5e32acb260f42``
+     - ``a16ecffacc67c9005814028080c90d098f10708b88b285fdbeef480358c37cb8``
 
 Useful tools
 ~~~~~~~~~~~~
