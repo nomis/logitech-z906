@@ -13,11 +13,24 @@ header is at the bottom of the PCB to the right of the microcontroller.
 
    Programming header pins
 
+Older versions will have a programming port that can be used without opening
+the control console. If it is not present you will need to open the console - be
+careful not to insert anything deep between the front panel and the PCB as this
+may damage the lower buttons.
+
+.. figure:: console-programming-port.jpg
+   :height: 275px
+   :alt: Console with programming port opened (2 rows of 3 pins)
+
+   Programming port pins
+
    +---------------------------+--------------------+--------------------+
    | ○ No connection           | ○ SWIM (pin 26)    | ○ NRST (pin 1)     |
    +---------------------------+--------------------+--------------------+
    | ■ |Vdd| (pin 6) 3.3V      | ○ GND (pin 4)      | ○ GND (pin 4)      |
    +---------------------------+--------------------+--------------------+
+
+   The bottom row of pins on the programming port is the row nearest the PCB.
 .. |Vdd| replace:: V\ :sub:`DD`
 
 The firmware can be accessed using an ST-LINK implementation,
