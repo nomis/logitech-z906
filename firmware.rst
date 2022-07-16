@@ -7,7 +7,7 @@ Control Console
 The microcontroller in the control console is an STM8S103K3. The programming
 header is at the bottom of the PCB to the right of the microcontroller.
 
-.. figure:: console-pcb.jpg
+.. figure:: images/console-pcb.jpg
    :height: 275px
    :alt: Console PCB with "PROGRAMMING" header at the bottom (2 rows of 3 pins)
 
