@@ -198,7 +198,7 @@ Turning the volume up above level 43 is ignored and no command is sent.
    < 08
 
 Main volume down
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 
 Turning the volume down below level 0 is ignored and no command is sent.
 
@@ -440,6 +440,7 @@ Select test speaker
 ~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: none
+
    > AA
    > 07 = type
    > 08 = length of remaining data (excluding checksum)
