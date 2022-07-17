@@ -74,10 +74,10 @@ Read 64 bytes of flash at ``0x80C0`` and modify the seconds time value
 
    80C0  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
    80D0  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx 00 00
-                                                    ^^ ^^
+                                                    ↑↑ ↑↑
+         ↓↓ ↓↓
    80E0  1C 1E xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
    80F0  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
-         ^^ ^^
 
 Write 64 bytes of flash at ``0x80C0`` (2 hours):
 
@@ -85,10 +85,10 @@ Write 64 bytes of flash at ``0x80C0`` (2 hours):
 
    80C0  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
    80D0  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx 00 00
-                                                    ^^ ^^
+                                                    ↑↑ ↑↑
+         ↓↓ ↓↓
    80E0  1C 20 xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
    80F0  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
-         ^^ ^^
 
 Write 64 bytes of flash at ``0x80C0`` (24 hours):
 
@@ -96,10 +96,10 @@ Write 64 bytes of flash at ``0x80C0`` (24 hours):
 
    80C0  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
    80D0  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx 00 01
-                                                    ^^ ^^
+                                                    ↑↑ ↑↑
+         ↓↓ ↓↓
    80E0  51 80 xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
    80F0  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
-         ^^ ^^
 
 Write 64 bytes of flash at ``0x80C0`` (7 days):
 
@@ -107,10 +107,10 @@ Write 64 bytes of flash at ``0x80C0`` (7 days):
 
    80C0  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
    80D0  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx 00 09
-                                                    ^^ ^^
+                                                    ↑↑ ↑↑
+         ↓↓ ↓↓
    80E0  3A 80 xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
    80F0  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
-         ^^ ^^
 
 Write 64 bytes of flash at ``0x80C0`` (no auto off):
 
@@ -118,10 +118,10 @@ Write 64 bytes of flash at ``0x80C0`` (no auto off):
 
    80C0  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
    80D0  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx 01 00
-                                                    ^^ ^^
+                                                    ↑↑ ↑↑
+         ↓↓ ↓↓
    80E0  00 00 xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
    80F0  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
-         ^^ ^^
 
 This value is limited to 24 bits by the protocol, so setting any bits in the top
 byte will cause the idle time to never be exceeded.
@@ -147,7 +147,7 @@ Read 64 bytes of flash at ``0x87C0`` and modify the instruction at ``0x87F2``:
    87D0  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
    87E0  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx CD 89
    87F0  BD 9A 4F CD 85 D1 xx xx  xx xx xx xx xx xx xx xx
-               ^^
+               ↑↑
 
 Write 64 bytes of flash at ``0x87C0`` (auto on):
 
@@ -157,7 +157,7 @@ Write 64 bytes of flash at ``0x87C0`` (auto on):
    87D0  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
    87E0  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx CD 89
    87F0  BD 9A 9D CD 85 D1 xx xx  xx xx xx xx xx xx xx xx
-               ^^
+               ↑↑
 
 Write 64 bytes of flash at ``0x87C0`` (power up in standby):
 
@@ -167,7 +167,7 @@ Write 64 bytes of flash at ``0x87C0`` (power up in standby):
    87D0  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
    87E0  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx CD 89
    87F0  BD 9A 4F CD 85 D1 xx xx  xx xx xx xx xx xx xx xx
-               ^^
+               ↑↑
 
 Explanation:
   The original instruction clears register A which is the parameter to the
