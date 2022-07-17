@@ -34,8 +34,8 @@ may damage the lower buttons.
 .. |Vdd| replace:: V\ :sub:`DD`
 
 The firmware can be accessed using an ST-LINK implementation,
-e.g. `esp-stlink <https://github.com/rumpeltux/esp-stlink>`_
-and `stm8flash <https://github.com/vdudouyt/stm8flash>`_.
+e.g. `esp-stlink <https://github.com/nomis/esp-stlink/tree/sa>`_
+and `stm8flash <https://github.com/nomis/stm8flash/tree/sa>`_.
 
 The flash consists of 64 byte pages. Writes must be to whole pages.
 
