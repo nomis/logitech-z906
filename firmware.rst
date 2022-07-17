@@ -50,7 +50,7 @@ communicate.
    * - Version
      - Size
      - SHA-3-256 hash
-   * - S-00103 (2020)
+   * - S-00103 (2016-2020)
      - 8KB
      - ``a16ecffacc67c9005814028080c90d098f10708b88b285fdbeef480358c37cb8``
 
