@@ -26,7 +26,8 @@ Pin out
 +-----+-----------------------------------+-----------------------------------+
 |   7 | Unused                            | Unused                            |
 +-----+-----------------------------------+-----------------------------------+
-|   8 | Amplifier presence                | Unknown signalling                |
+|   8 | | Pull-down (0V) resistor         | Output 3.3V for 500ms until power |
+|     | | Amplifier presence              | up complete                       |
 +-----+-----------------------------------+-----------------------------------+
 |   9 | Unused                            | Unused                            |
 +-----+-----------------------------------+-----------------------------------+
@@ -40,7 +41,8 @@ Pin out
 +-----+-----------------------------------+-----------------------------------+
 |  14 | Unused                            | Unused                            |
 +-----+-----------------------------------+-----------------------------------+
-|  15 | 0V if present                     | Console presence                  |
+|  15 | | Output 0V if comms active       | | Pull-up (3.3V) resistor         |
+|     | |                                 | | Console presence                |
 +-----+-----------------------------------+-----------------------------------+
 
 Serial communication
@@ -49,7 +51,9 @@ Serial communication
 The Rx/Tx pins are 3.3V TTL serial at a baud rate of 57600 bps with 8 bits per
 byte, odd parity and 1 stop bit. All communication is initiated by the console.
 
-The amplifier will turn off the speakers if there is no console present.
+The amplifier will not turn on its power until the console is present. It will
+turn off its power (speakers and serial communication) immediately if there is
+no console present. The power supply for the console is always active.
 
 The console will get upset if the amplifier is not present (this is the cause of
 the 2, 3 or 4 error LEDs displayed).
