@@ -146,9 +146,9 @@ effect is sent by the console automatically (`Effect selection`_).
 Power off
 ~~~~~~~~~
 
-The ``37`` command here turns the speakers off and saves settings.
+The ``36`` command here turns the speakers off and saves settings.
 
-The ``36`` command's purpose is unknown.
+The ``37`` command's purpose is unknown.
 
 Sends `Read status/configuration`_ at the end to update the console state.
 
