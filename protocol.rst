@@ -184,7 +184,7 @@ Volume/level commands
 
 The console implements the mute operation by setting the volume to 0 using lots
 of `Main volume down`_ commands and then back up using lots of `Main volume up`_
-commands. Going into standby while muted will result in a volume of 0 being
+commands. Going into standby while muted may result in a volume of 0 being
 saved.
 
 Main volume up
@@ -206,6 +206,38 @@ Turning the volume down below level 0 is ignored and no command is sent.
 
    > 09
    < 09
+
+Mute
+~~~~
+
+Turn the volume down to level 0.
+
+.. code-block:: none
+
+   > 09
+   > 09
+   > 09 ...
+   < 09
+   < 09
+   < 09 ...
+
+Unmute
+~~~~~~
+
+Turn the volume back up.
+
+.. code-block:: none
+
+   > 38
+   > 08
+   > 08
+   > 08 ...
+   > 39
+   < 38
+   < 08
+   < 08
+   < 08 ...
+   < 39
 
 Subwoofer level up
 ~~~~~~~~~~~~~~~~~~
@@ -288,6 +320,7 @@ Input 1 (3.5mm TRS, 6 channels)
    < 02
    < XX (effect selection)
    < 08 ... (unmute)
+   < 39
 
 Input 2 (RCA, 2 channels)
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -302,6 +335,7 @@ Input 2 (RCA, 2 channels)
    < 05
    < XX (effect selection)
    < 08 ... (unmute)
+   < 39
 
 Input 3 (TOSLINK, S/PDIF optical fibre)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -317,6 +351,7 @@ Input 3 (TOSLINK, S/PDIF optical fibre)
    < XX = decode state (17 = signal detected, 18 = no signal)
    < XX (effect selection)
    < 08 ... (unmute)
+   < 39
 
 Input 4 (TOSLINK, S/PDIF optical fibre)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -332,6 +367,7 @@ Input 4 (TOSLINK, S/PDIF optical fibre)
    < XX = decode state (17 = signal detected, 18 = no signal)
    < XX (effect selection)
    < 08 ... (unmute)
+   < 39
 
 Input 5 (RCA, S/PDIF 75Ω coaxial)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -347,6 +383,7 @@ Input 5 (RCA, S/PDIF 75Ω coaxial)
    < XX = decode state (17 = signal detected, 18 = no signal)
    < XX (effect selection)
    < 08 ... (unmute)
+   < 39
 
 
 Input 6 (3.5mm TRS on the console, 2 channels)
@@ -362,6 +399,7 @@ Input 6 (3.5mm TRS on the console, 2 channels)
    < 07
    < XX (effect selection)
    < 08 ... (unmute)
+   < 39
 
 Effect selection
 ----------------
