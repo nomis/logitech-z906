@@ -48,14 +48,14 @@ Read status/configuration
    < 15 = subwoofer level (0 to 43)
    < 00 = input (0 to 5 => 1 to 6)
    < 00 = mute (0 = off, 1 = on)
-   < 00
-   < 00
+   < 00 = input 4 effect (0 = 3D, 1 = 2.1, 2 = 4.1, 3 = disabled)
+   < 00 = input 5 effect (0 = 3D, 1 = 2.1, 2 = 4.1, 3 = disabled)
    < 00 = input 2 effect (0 = 3D, 1 = 2.1, 2 = 4.1, 3 = disabled)
    < 00 = input 6 effect (0 = 3D, 1 = 2.1, 2 = 4.1, 3 = disabled)
    < 03 = input 1 effect (0 = 3D, 1 = 2.1, 2 = 4.1, 3 = disabled)
+   < 00 = input 3 effect (0 = 3D, 1 = 2.1, 2 = 4.1, 3 = disabled)
+   < 00 = digital signal status (amplifier)
    < 00
-   < 00 = unknown (00 or 0E)
-   < 00 = speaker test? (00 or 33)
    < 01
    < 05
    < 04
@@ -63,6 +63,74 @@ Read status/configuration
    < 00
    < 00 = auto standby (0 = enabled, 1 = disabled)
    < XX = checksum
+
+This can also be used in reverse, to get the status from the console. The
+console reports the input effects in ascending order 1-6 (and only if they have
+been set using the console). Allowing the response to go to the amplifier will
+overwrite the effect settings with incorrect values and the current idle time
+will become over 24 days which would normally result in an automatic standby
+occurring.
+
+.. code-block:: none
+
+   > 34
+   > AA
+   > 0E = type
+   > 03 = length of remaining data (excluding checksum)
+   > 20 = set most significant byte of the idle time (lower bytes are reset to 0)
+   > 00
+   > 00
+   > CF = checksum
+   < AA
+   < 0A = type
+   < 14 = length of remaining data (excluding checksum)
+   < 0A = main volume (0 to 43)
+   < 15 = rear level (0 to 43)
+   < 15 = centre level (0 to 43)
+   < 15 = subwoofer level (0 to 43)
+   < 00 = input (0 to 5 => 1 to 6)
+   < 00 = mute (0 = off, 1 = on)
+   < 00 = input 1 effect (0 = 3D, 1 = 2.1, 2 = 4.1, 3 = disabled)
+   < 00 = input 2 effect (0 = 3D, 1 = 2.1, 2 = 4.1, 3 = disabled)
+   < 00 = input 3 effect (0 = 3D, 1 = 2.1, 2 = 4.1, 3 = disabled)
+   < 00 = input 4 effect (0 = 3D, 1 = 2.1, 2 = 4.1, 3 = disabled)
+   < 00 = input 5 effect (0 = 3D, 1 = 2.1, 2 = 4.1, 3 = disabled)
+   < 00 = input 6 effect (0 = 3D, 1 = 2.1, 2 = 4.1, 3 = disabled)
+   < 00 = digital signal status (console)
+   < 00
+   < 06
+   < 01
+   < 03
+   < 00 = standby (0 = on, 1 = standby)
+   < 00
+   < 00 = auto standby (0 = enabled, 1 = disabled)
+   < XX = checksum
+
+Digital signal status (amplifier)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The console stores the signal status differently from the amplifier so it will
+be confused by receiving the amplifier values while running (use the `Decode
+state`_ message to fix this).
+
+* ``00`` = N/A
+* ``0C`` = signal detected (5.1 levels, effects mandatory)
+* ``0E`` = unknown signal (decode/effect LEDs cycle continuously)
+
+Digital signal status (console)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The console reports the signal status differently from the amplifier.
+
+* ``00`` = N/A or unknown signal (decode/effect LEDs cycle continuously)
+* ``01`` = no signal
+* ``02`` = 5.1 signal detected (5.1 levels, no effects)
+* ``03`` = 4.1 signal detected (4.1 levels, no effects)
+* ``04`` = 3.1 signal detected (5.1 levels, no effects)
+* ``05`` = 2.1 signal detected (2.1 levels, no effects)
+* ``06`` = 2.0 signal detected (2.1 levels, no effects)
+* ``07`` = signal detected (5.1 levels, effects mandatory)
+* ``08`` = signal detected (0.1 levels, no effects)
 
 Write status/configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -437,6 +505,10 @@ Decode state
 * ``1E`` = signal detected (5.1 levels, effects mandatory)
 * ``1F`` = unknown signal (decode/effect LEDs cycle continuously)
 
+The default state on the console is ``1F`` until this is provided by the
+amplifier. The console will update the effect when the decode state changes (no
+signal = effect disabled).
+
 Effect selection
 ----------------
 
@@ -550,7 +622,9 @@ Sends `Read status/configuration`_ at the end to update the console state.
    > AA
    > 0E = type
    > 03 = length of remaining data (excluding checksum)
-   > 20 00 00
+   > 20 = most significant byte of the idle time (lower bytes are reset to 0)
+   > 00
+   > 00
    > CF = checksum
    > AA
    > 0A = type
@@ -578,7 +652,9 @@ light goes out). The setting will be toggled.
    > AA
    > 0E = type
    > 03 = length of remaining data (excluding checksum)
-   > 20 00 00
+   > 20 = set most significant byte of the idle time (lower bytes are reset to 0)
+   > 00
+   > 00
    > CF = checksum
    > AA
    > 0A = type
@@ -593,3 +669,7 @@ light goes out). The setting will be toggled.
    < 8A
    < 76 = checksum
    < 36
+
+The current idle time will become over 24 days which would normally result in an
+automatic standby occurring but holding the button also repeatedly sends the
+command to reset the idle time so it's unlikely to happen.
