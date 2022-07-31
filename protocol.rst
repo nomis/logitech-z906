@@ -221,6 +221,22 @@ Turn the volume down to level 0.
    < 09
    < 09 ...
 
+The amplifier can also report a muted status (without changing the volume).
+When the volume is next adjusted the console will unmute immediately:
+
+.. code-block:: none
+
+   < 20
+   ...
+   > 38
+   > 08 or 09
+   > 39
+
+The console user interface will only report this muted status correctly (by
+flashing the volume) if the amplifier has previously sent its own unmute status
+while the console has entered the mute state itself at least once since the last
+power on.
+
 Unmute
 ~~~~~~
 
@@ -238,6 +254,13 @@ Turn the volume back up.
    < 08
    < 08 ...
    < 39
+
+The amplifier can also report an unmuted status (without changing the volume).
+If the console had muted then the volume level will still be 0:
+
+.. code-block:: none
+
+   < 21
 
 Subwoofer level up
 ~~~~~~~~~~~~~~~~~~
