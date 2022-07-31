@@ -24,8 +24,9 @@ Automatic standby
 
 To enable/disable automatic standby, hold the "level" button for 5 seconds
 (until the level change light goes out). There's no obvious indication that
-anything has changed but the current effect will have been changed to the
-default for all inputs (check by turning the console off and on).
+anything has changed but the stored effects for all of the inputs will have been
+reordered because the console sends them in the wrong order (check by turning
+the console off and on).
 
 To get this into a known state (automatic standby enabled), hold down the
 "input" button for 8 seconds while in standby. This will reset all settings.

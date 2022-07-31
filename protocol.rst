@@ -178,7 +178,8 @@ Read input volume
 
 The console doesn't use this command, but you can find out the current volume of
 the input. Silence is 0 and it looks like it goes up to 1,000,000 with some
-maximum amplitude square waves. Normal values are around 1,000 to 2,000.
+maximum amplitude square waves. Normal values are around 1,000 to 2,000. Above a
+certain volume the idle time will be reset and held at 0.
 
 .. code-block:: none
 
@@ -665,7 +666,9 @@ Enable/disable automatic standby
 --------------------------------
 
 While powered on hold the "level" button for 5 seconds (until the level change
-light goes out). The setting will be toggled.
+light goes out). The setting will be toggled. The console will also send the
+current effect configuration in the wrong order so all of the effects set for
+the inputs will be changed.
 
 .. code-block:: none
 
