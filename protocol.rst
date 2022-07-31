@@ -371,7 +371,7 @@ Input 3 (TOSLINK, S/PDIF optical fibre)
    > 08 ... (unmute)
    < 09 ... (mute)
    < 03
-   < XX = decode state (17 = signal detected, 18 = no signal)
+   < XX = `Decode state`_
    < XX (effect selection)
    < 08 ... (unmute)
    < 39
@@ -387,7 +387,7 @@ Input 4 (TOSLINK, S/PDIF optical fibre)
    > 08 ... (unmute)
    < 09 ... (mute)
    < 04
-   < XX = decode state (17 = signal detected, 18 = no signal)
+   < XX = `Decode state`_
    < XX (effect selection)
    < 08 ... (unmute)
    < 39
@@ -403,7 +403,7 @@ Input 5 (RCA, S/PDIF 75Ω coaxial)
    > 08 ... (unmute)
    < 09 ... (mute)
    < 06
-   < XX = decode state (17 = signal detected, 18 = no signal)
+   < XX = `Decode state`_
    < XX (effect selection)
    < 08 ... (unmute)
    < 39
@@ -423,6 +423,19 @@ Input 6 (3.5mm TRS on the console, 2 channels)
    < XX (effect selection)
    < 08 ... (unmute)
    < 39
+
+Decode state
+~~~~~~~~~~~~
+
+* ``17`` = 5.1 signal detected (5.1 levels, no effects)
+* ``18`` = no signal
+* ``19`` = 4.1 signal detected (4.1 levels, no effects)
+* ``1A`` = 3.1 signal detected (5.1 levels, no effects)
+* ``1B`` = 2.1 signal detected (2.1 levels, no effects)
+* ``1C`` = 2.0 signal detected (2.1 levels, no effects)
+* ``1D`` = signal detected (0.1 levels, no effects)
+* ``1E`` = signal detected (5.1 levels, effects mandatory)
+* ``1F`` = unknown signal (decode/effect LEDs cycle continuously)
 
 Effect selection
 ----------------
