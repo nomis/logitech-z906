@@ -47,7 +47,7 @@ Read status/configuration
    < 15 = centre level (0 to 43)
    < 15 = subwoofer level (0 to 43)
    < 00 = input (0 to 5 => 1 to 6)
-   < 00
+   < 00 = mute (0 = off, 1 = on)
    < 00
    < 00
    < 00 = input 2 effect (0 = 3D, 1 = 2.1, 2 = 4.1, 3 = disabled)
@@ -232,10 +232,9 @@ When the volume is next adjusted the console will unmute immediately:
    > 08 or 09
    > 39
 
-The console user interface will only report this muted status correctly (by
-flashing the volume) if the amplifier has previously sent its own unmute status
-while the console has entered the mute state itself at least once since the last
-power on.
+The console has its own independent "muted volume" and will use this to report
+the mute status and when the button is pressed to unmute. At every power on this
+"muted volume" is reset to 0.
 
 Unmute
 ~~~~~~
@@ -256,11 +255,12 @@ Turn the volume back up.
    < 39
 
 The amplifier can also report an unmuted status (without changing the volume).
-If the console had muted then the volume level will still be 0:
 
 .. code-block:: none
 
    < 21
+
+If the console had muted then the volume level will still be 0.
 
 Subwoofer level up
 ~~~~~~~~~~~~~~~~~~
