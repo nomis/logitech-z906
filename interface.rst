@@ -28,7 +28,7 @@ Pin out
 +-----+-----------------------------+-------------------------------------------------+
 |   7 | Unknown (not required)      | Unknown (not required)                          |
 +-----+-----------------------------+-------------------------------------------------+
-|   8 | | Pull-down (0V) resistor   | | Output 3.3V for 500ms at comms start/power up |
+|   8 | | Pull-down (0V) resistor   | | Output 3.3V for 500ms at power up/comms start |
 |     | | Amplifier presence        | | Output 3.3V for 100ms after comms stop        |
 +-----+-----------------------------+-------------------------------------------------+
 |   9 | Output 3.3V when powered    |                                                 |
@@ -50,7 +50,8 @@ Pin out
 
 Pin 7 has some bidirectional signalling with intervals of no less than 100ms
 related to changes in the values of pins 8 and 15. If it's connected then the
-timing of pin 8 changes to 1s at comms start and 4s after comms stop.
+duration of amplifier pin 8 changes to 1s at power up/comms start and 4s after
+comms stop.
 
 Serial communication
 --------------------
@@ -63,6 +64,10 @@ present. It will turn off its power immediately if there is no console present.
 The power supply for the console is always active.
 
 The console will get upset if the amplifier doesn't respond to communication
-(this is the cause of the 2, 3 or 4 error LEDs displayed).
+(this is the cause of the 2, 3 or 4 error indication displayed on the console
+input selection LEDs).
+
+* 2 LEDs: amplifier presence remains 3.3V high
+* 3 LEDs: no response to serial communication
 
 The `protocol <protocol.rst>`_ is a simple binary interface.
