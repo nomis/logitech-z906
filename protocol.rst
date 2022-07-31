@@ -190,6 +190,26 @@ maximum amplitude square waves. Normal values are around 1,000 to 2,000.
    < 00 00 00 = volume (U24BE in unknown units)
    < XX = checksum
 
+Read temperature
+~~~~~~~~~~~~~~~~
+
+The console doesn't use this command, but you can find out the current
+temperature in the amplifier.
+
+.. code-block:: none
+
+   > 25
+   < 25
+   < AA
+   < 0C = type
+   < 05 = length of remaining data (excluding checksum)
+   < 00
+   < 00 = temperature 1 in Celsius
+   < 00 = temperature 2 in Celsius
+   < 00 = temperature 3 in Celsius
+   < 00
+   < XX = checksum
+
 Power commands
 --------------
 
