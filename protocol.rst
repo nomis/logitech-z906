@@ -30,6 +30,12 @@ Communication is represented as follows:
    > Message from console to amplifier
    < Message from amplifier to console
 
+Do not send additional requests to the amplifier while it is/will be sending a
+multi-byte response. It cannot handle this and will overwrite part of the output
+with any new single byte responses. For multi-byte responses it will start again
+instead of finishing the earlier response. Wait for it to finish responding
+before making additional requests. The console does not have this problem.
+
 Status commands
 ---------------
 
