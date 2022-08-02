@@ -75,7 +75,8 @@ console reports the input effects in ascending order 1-6 (and only if they have
 been set using the console). Allowing the response to go to the amplifier will
 overwrite the effect settings with incorrect values and the current idle time
 will become over 24 days which would normally result in an automatic standby
-occurring.
+occurring. It will also overwrite the digital signal status with the console's
+value until it next changes.
 
 .. code-block:: none
 
@@ -120,7 +121,8 @@ be confused by receiving the amplifier values while running (use the `Decode
 state`_ message to fix this).
 
 * ``00`` = N/A
-* ``0C`` = signal detected (5.1 levels, effects mandatory)
+* ``01`` = 5.1 signal detected (5.1 levels, no effects)
+* ``0C`` = 2.0 signal detected (5.1 levels, effects mandatory)
 * ``0E`` = unknown signal (decode/effect LEDs cycle continuously)
 
 Digital signal status (console)
@@ -135,8 +137,8 @@ The console reports the signal status differently from the amplifier.
 * ``04`` = 3.1 signal detected (5.1 levels, no effects)
 * ``05`` = 2.1 signal detected (2.1 levels, no effects)
 * ``06`` = 2.0 signal detected (2.1 levels, no effects)
-* ``07`` = signal detected (5.1 levels, effects mandatory)
-* ``08`` = signal detected (0.1 levels, no effects)
+* ``07`` = 2.0 signal detected (5.1 levels, effects mandatory)
+* ``08`` = signal detected (5.1 levels, no effects)
 
 Write status/configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -528,8 +530,8 @@ Decode state
 * ``1A`` = 3.1 signal detected (5.1 levels, no effects)
 * ``1B`` = 2.1 signal detected (2.1 levels, no effects)
 * ``1C`` = 2.0 signal detected (2.1 levels, no effects)
-* ``1D`` = signal detected (0.1 levels, no effects)
-* ``1E`` = signal detected (5.1 levels, effects mandatory)
+* ``1D`` = signal detected (5.1 levels, no effects)
+* ``1E`` = 2.0 signal detected (5.1 levels, effects mandatory)
 * ``1F`` = unknown signal (decode/effect LEDs cycle continuously)
 
 The default state on the console is ``1F`` until this is provided by the
