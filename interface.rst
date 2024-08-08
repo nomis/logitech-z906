@@ -45,7 +45,7 @@ Pin out
 |  14 | Unused                      | Unused                                          |
 +-----+-----------------------------+-------------------------------------------------+
 |  15 | | Output 0V if comms active | | Pull-up (3.3V) resistor                       |
-|     | |                           | | Console presence                              |
+|     | | to turn on amplifier      | | Console presence                              |
 +-----+-----------------------------+-------------------------------------------------+
 
 Pin 7 has some bidirectional signalling with intervals of no less than 100ms
@@ -60,8 +60,10 @@ The Rx/Tx pins are 3.3V TTL serial at a baud rate of 57600 bps with 8 bits per
 byte, odd parity and 1 stop bit. All communication is initiated by the console.
 
 The amplifier will not turn on its power to the speakers until the console is
-present. It will turn off its power immediately if there is no console present.
-The power supply for the console is always active.
+present (pin 15). It will turn off its power immediately if there is no console
+present. The power supply for the console is always active. The amplifier should
+be powered off using pin 15 when not actively in use otherwise it will waste
+power and heat up.
 
 The console will get upset if the amplifier doesn't respond to communication
 (this is the cause of the 2, 3 or 4 error indication displayed on the console
