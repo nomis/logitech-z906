@@ -8,6 +8,10 @@ cable (but the screws to hold the connectors together will be mismatched).
 
 When a VGA cable is used, pin 9 may not be present.
 
+If not using the original console, avoid connecting anything to the first 5
+pins unless those audio connections are required because it's possible to
+introduce noise with them.
+
 Pin out
 -------
 
