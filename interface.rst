@@ -32,7 +32,7 @@ Pin out
 +-----+-----------------------------+-------------------------------------------------+
 |   7 | Unknown (not required)      | Unknown (not required)                          |
 +-----+-----------------------------+-------------------------------------------------+
-|   8 | | Pull-down (0V) resistor   | | Output 3.3V for 500ms at power up/comms start |
+|   8 | | Pull-up (3.3V) resistor   | | Output 3.3V for 500ms at power up/comms start |
 |     | | Amplifier presence        | | Output 3.3V for 100ms after comms stop        |
 +-----+-----------------------------+-------------------------------------------------+
 |   9 | Output 3.3V when powered    |                                                 |
