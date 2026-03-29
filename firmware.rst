@@ -45,8 +45,9 @@ The flash consists of 64 byte pages. Writes must be to whole pages.
 
 The EEPROM consists of 640 bytes that are all zero.
 
+Reading the flash:
+
 .. code-block:: bash
-   :caption: Reading the flash
 
    stm8flash -c stlinkv2 -p STM8S103K3 -s flash -r flash.bin
 
@@ -54,8 +55,9 @@ The flash can be edited with a binary editor such as
 `hexedit <https://rigaux.org/hexedit.html>`_. Keep a backup copy when
 making changes.
 
+Writing the flash:
+
 .. code-block:: bash
-   :caption: Writing the flash
 
    stm8flash -c stlinkv2 -p STM8S103K3 -s flash -w flash-modified.bin
 
