@@ -33,16 +33,34 @@ may damage the lower buttons.
    The bottom row of pins on the programming port is the row nearest the PCB.
 .. |Vdd| replace:: V\ :sub:`DD`
 
+Accessing the firmware
+~~~~~~~~~~~~~~~~~~~~~~
+
 The firmware can be accessed using an ST-LINK implementation,
-e.g. `esp-stlink <https://github.com/nomis/esp-stlink/tree/sa>`_
-and `stm8flash <https://github.com/nomis/stm8flash/tree/sa>`_.
+e.g. `esp-stlink <https://github.com/rumpeltux/esp-stlink>`_
+and `stm8flash <https://github.com/vdudouyt/stm8flash>`_. Attempts were
+made to use an official ST-LINK/V2 but it was unable to communicate.
 
 The flash consists of 64 byte pages. Writes must be to whole pages.
 
 The EEPROM consists of 640 bytes that are all zero.
 
-Attempts were made to use an official ST-LINK/V2 but it was unable to
-communicate.
+.. code-block:: bash
+   :caption: Reading the flash
+
+   stm8flash -c stlinkv2 -p STM8S103K3 -s flash -r flash.bin
+
+The flash can be edited with a binary editor such as
+`hexedit <https://rigaux.org/hexedit.html>`_. Keep a backup copy when
+making changes.
+
+.. code-block:: bash
+   :caption: Writing the flash
+
+   stm8flash -c stlinkv2 -p STM8S103K3 -s flash -w flash-modified.bin
+
+Flash contents
+^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -54,8 +72,8 @@ communicate.
      - 8KB
      - ``a16ecffacc67c9005814028080c90d098f10708b88b285fdbeef480358c37cb8``
 
-Useful tools
-~~~~~~~~~~~~
+Useful tools for analysing the flash
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * `Disassembler (naken_asm) <https://github.com/mikeakohn/naken_asm>`_
 * `Decompiler (Ghidra) <https://ghidra-sre.org/>`_
