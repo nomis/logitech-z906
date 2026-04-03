@@ -4,8 +4,9 @@ Firmware
 Control Console
 ---------------
 
-The microcontroller in the control console is an STM8S103K3. The programming
-header is at the bottom of the PCB to the right of the microcontroller.
+The microcontroller in the control console is an STM8S103K3 or an STM32C031K4.
+The programming header is at the bottom of the PCB to the right of the
+microcontroller.
 
 .. figure:: console-pcb.jpg
    :height: 275px
@@ -41,6 +42,9 @@ e.g. `esp-stlink <https://github.com/rumpeltux/esp-stlink>`_
 and `stm8flash <https://github.com/vdudouyt/stm8flash>`_. Attempts were
 made to use an official ST-LINK/V2 but it was unable to communicate.
 
+STM8
+^^^^
+
 The flash consists of 64 byte pages. Writes must be to whole pages.
 
 The EEPROM consists of 640 bytes that are all zero.
@@ -70,9 +74,12 @@ Flash contents
    * - Version
      - Size
      - SHA-3-256 hash
-   * - S-00103 (2016-2020)
+   * - STM8 (2016-2020)
      - 8KB
      - ``a16ecffacc67c9005814028080c90d098f10708b88b285fdbeef480358c37cb8``
+   * - STM32 (2022-)
+     - 16KB
+     - ``b08c780e6b8bc975d90aa419276c057356dae56bbd9e8810bd09c3d9252e968a``
 
 Useful tools for analysing the flash
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -81,8 +88,8 @@ Useful tools for analysing the flash
 * `Decompiler (Ghidra) <https://ghidra-sre.org/>`_
   with `STM8 plugin <https://github.com/esaulenka/ghidra_STM8>`_
 
-Modifications
-~~~~~~~~~~~~~
+Modifications (STM8)
+~~~~~~~~~~~~~~~~~~~~
 
 Idle time for automatic standby
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -148,6 +155,7 @@ byte will cause the idle time to never be exceeded.
 
 Automatic power on
 ^^^^^^^^^^^^^^^^^^
+
 This code is part of the reset interrupt for the microcontroller so it will not
 be executed after a short power cycle while the speakers are turned off.
 
@@ -197,3 +205,37 @@ Explanation:
   Function ``0x85D1`` stores the value at memory ``0x01BB``, which is then used
   in the first status request to decide whether to run the power on or power off
   function.
+
+Modifications (STM32)
+~~~~~~~~~~~~~~~~~~~~~
+
+Automatic power on
+^^^^^^^^^^^^^^^^^^
+
+This code is part of the reset interrupt for the microcontroller so it will not
+be executed after a short power cycle while the speakers are turned off.
+
+When turning the speakers on/off by switching the power supply on/off, be aware
+that the settings (current volume, etc.) are only saved when going into standby.
+
+
+Modify the instruction in the flash at ``0x1B02``:
+
+.. code-block:: none
+
+   1B00  62 B6 00 20 FF F7 1C FE
+               ↑↑
+
+Modify to power on automatically:
+
+.. code-block:: none
+
+   1B00  62 B6 01 20 FF F7 1C FE
+               ↑↑
+
+Modify to power up in standby:
+
+.. code-block:: none
+
+   1B00  62 B6 00 20 FF F7 1C FE
+               ↑↑
