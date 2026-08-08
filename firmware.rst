@@ -77,6 +77,9 @@ Flash contents
    * - STM8 (2016-2020)
      - 8KB
      - ``a16ecffacc67c9005814028080c90d098f10708b88b285fdbeef480358c37cb8``
+   * - STM8
+     - 8KB
+     - ``c2b05674d1a2b611ad87d4ae3acaba907f51ee273b7bd1f34d4129e71efd1b1e``
    * - STM32 (2022-)
      - 16KB
      - ``b08c780e6b8bc975d90aa419276c057356dae56bbd9e8810bd09c3d9252e968a``
@@ -166,6 +169,11 @@ There is a `protocol <protocol.rst>`_ side effect of enabling this in that the
 console will send ``F8`` or ``FC`` instead of ``34`` the first time it goes into
 standby. This appears to have no impact to the operation of the speakers.
 
+There are at least two different versions of the STM8 flash, so if the content
+doesn't match then try the other version.
+
+Version 1 (a16ecffa...)
+***********************
 
 Read 64 bytes of flash at ``0x87C0`` and modify the instruction at ``0x87F2``:
 
@@ -205,6 +213,39 @@ Explanation:
   Function ``0x85D1`` stores the value at memory ``0x01BB``, which is then used
   in the first status request to decide whether to run the power on or power off
   function.
+
+Version 2 (c2b05674...)
+***********************
+
+Read 64 bytes of flash at ``0x8800`` and modify the instruction at ``0x8827``:
+
+.. code-block:: none
+
+   8800  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
+   8820  xx xx xx CD 89 F2 9A 4F  CD 85 BD xx xx xx xx xx
+                              ↑↑
+   8840  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
+   8860  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
+
+Write 64 bytes of flash at ``0x8800`` (auto on):
+
+.. code-block:: none
+
+   8800  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
+   8820  xx xx xx CD 89 F2 9A 9D  CD 85 BD xx xx xx xx xx
+                              ↑↑
+   8840  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
+   8860  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
+
+Write 64 bytes of flash at ``0x8800`` (power up in standby):
+
+.. code-block:: none
+
+   8800  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
+   8820  xx xx xx CD 89 F2 9A 4F  CD 85 BD xx xx xx xx xx
+                              ↑↑
+   8840  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
+   8860  xx xx xx xx xx xx xx xx  xx xx xx xx xx xx xx xx
 
 Modifications (STM32)
 ~~~~~~~~~~~~~~~~~~~~~
