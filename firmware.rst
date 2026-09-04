@@ -78,7 +78,7 @@ Flash contents
      - 8KB
      - ``a16ecffacc67c9005814028080c90d098f10708b88b285fdbeef480358c37cb8``
    * - STM8
-     - 8KB
+     - 8KB (2022-)
      - ``c2b05674d1a2b611ad87d4ae3acaba907f51ee273b7bd1f34d4129e71efd1b1e``
    * - STM32 (2022-)
      - 16KB
