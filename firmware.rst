@@ -83,6 +83,9 @@ Flash contents
    * - STM32 (2022-)
      - 16KB
      - ``b08c780e6b8bc975d90aa419276c057356dae56bbd9e8810bd09c3d9252e968a``
+   * - STM32 (2026-)
+     - 16KB
+     - ``63581566ab0fd6ab4c221b01a86e9fc54b79a86d949f7e6d3e72ca5486905a22``
 
 Useful tools for analysing the flash
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -259,6 +262,8 @@ be executed after a short power cycle while the speakers are turned off.
 When turning the speakers on/off by switching the power supply on/off, be aware
 that the settings (current volume, etc.) are only saved when going into standby.
 
+Version 1 (b08c780e....)
+***********************
 
 Modify the instruction in the flash at ``0x1B02``:
 
@@ -280,3 +285,27 @@ Modify to power up in standby:
 
    1B00  62 B6 00 20 FF F7 1C FE
                ↑↑
+
+Version 2 (63581566...)
+***********************
+
+Modify the instruction in the flash at ``0x1AE6``:
+
+.. code-block:: none
+
+   1AE0  01 F0 64 F9 62 B6 00 20
+                           ↑↑
+
+Modify to power on automatically:
+
+.. code-block:: none
+
+   1AE0  01 F0 64 F9 62 B6 01 20
+                           ↑↑
+
+Modify to power up in standby:
+
+.. code-block:: none
+
+   1AE0  01 F0 64 F9 62 B6 00 20
+                           ↑↑
